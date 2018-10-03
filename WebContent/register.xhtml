@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://xmlns.jcp.org/jsf/html"
+ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+ xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Register</title>	
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet" />
+</h:head>
+
+<h:body class="bg-dark">
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header panel-title ">Register an Account</div>
+      <div class="card-body">
+        <h:form>
+        
+        <div class="form-group">
+                    <label for="role" >Select a Role</label>
+                        <div class="col-sm-8">
+                           <h:selectOneMenu id="role" value="#{RegisterBean.regvo.role}" class="form-control">
+                            <f:selectItem  itemLabel="Select a Role" itemValue=""/>
+                           <f:selectItem id="user" itemLabel="User" itemValue="user"/>
+                           <f:selectItem id="manager" itemLabel="Manager" itemValue="manager"/>
+                            <!-- <f:ajax render="fees" /> -->
+                            <f:ajax render="@form" />
+                        
+                           </h:selectOneMenu> 
+                       
+                        </div>
+                </div>
+         
+        <div class="form-group">
+          
+          First Name <h:inputText class="form-control" id="Firstname" value="#{RegisterBean.regvo.firstname}" a:placeholder="First name"
+ 		required="true" requiredMessage="Required Field: First name" validatorMessage="Please enter valid Firstname.">
+ 		<f:validateRegex pattern= "^[a-zA-Z]+"/></h:inputText>
+ 		<h:message for="Firstname" style="color:Red"></h:message>  
+ 		</div>
+        
+         <div class="form-group">
+         
+          Last Name <h:inputText class="form-control" id="Lastname" value="#{RegisterBean.regvo.lastname}" a:placeholder="Last name" 
+		required="true" requiredMessage="Required Field: Lastname" validatorMessage="Please enter valid Lastname.">
+		<f:validateRegex pattern= "^[a-zA-Z]+"/></h:inputText>
+		<h:message for="Lastname" style="color:Red"></h:message> 
+ 		</div>
+        
+   
+        
+        <div class="form-group">
+         
+          Personal Email 
+		<h:inputText class="form-control" id="Personalemail" value="#{RegisterBean.regvo.personalemail}" a:placeholder="Email Address" 
+		required="true" requiredMessage="Required Field: Personalemail" />	
+		<h:message for="Personalemail" style="color:Red"></h:message> 
+ 		</div>
+        
+        <div class="form-group">
+         
+          Username 
+		<h:inputText class="form-control" id="Username" value="#{RegisterBean.regvo.username}" a:placeholder="Username" 
+		required="true" requiredMessage="Required Field: Username" validatorMessage="Please enter valid Username.">
+		<f:validateRegex pattern= "^[a-z0-9A-Z_]+$"/></h:inputText>
+		<h:message for="Username" style="color:Red"></h:message>
+ 		</div>
+        
+        <div class="form-group">
+         
+         Password 
+ 		<h:inputSecret class="form-control" id="Password" value="#{RegisterBean.regvo.password}" a:placeholder="Password" 
+ 		required="true" requiredMessage="Required Field: Password" />	
+ 		<h:message for="Password" style="color:Red"></h:message>
+ 		</div>
+ 		
+ 		<div class="form-group">
+                    <h:panelGroup rendered="#{RegisterBean.regvo.role == 'manager'}">
+                            <label for="fees">Fees</label>
+                            <div class="col-sm-10">
+                                    <h:inputText id="fees" class="form-control" value="#{RegisterBean.regvo.fees}" a:placeholder="Enter your Fees"/>
+                            </div>
+                    </h:panelGroup>
+                </div>
+                
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                        <h:commandButton class="btn btn-primary" value="Register" action="#{RegisterBean.createResigerForm}"/>
+                  </div>
+                </div>
+                
+         </h:form>
+        <div class="text-center">
+     <span class="d-block small mt-3">Have an Account? <a  href="login.xhtml">Login</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+</h:body>
+
+</html>

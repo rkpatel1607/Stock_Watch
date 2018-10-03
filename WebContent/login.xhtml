@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://xmlns.jcp.org/jsf/html"
+ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+ xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Login Form</title>
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet" />
+</h:head>
+
+<h:body class="bg-dark">
+	<div class="alert alert-danger">
+    <strong></strong> ${error}
+  </div>
+  <div class="alert alert-info">
+    <strong></strong> ${Sucess}
+  </div>
+  <div class="container">
+  <H1 style = "color:white">MyStock</H1>
+  
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">Login</div>
+      <div class="card-body">
+        <h:form>
+         <div class="form-group">
+            <label for="Username">User Name</label>
+            <h:inputText class="form-control" id="Username" value="#{LoginBean.loginvo.username}" a:placeholder="Username"
+ 			required="true" requiredMessage="Required Field: Username" validatorMessage="Please enter valid Username.">
+ 				<f:validateRegex pattern= "^[a-z0-9A-Z_]+$"/></h:inputText>
+ 			<h:message for="Username" style="color:Red"></h:message>
+            </div>
+                  
+          <div class="form-group">
+            <label for="Password">Password</label>
+            <h:inputSecret class="form-control" id="Password" value="#{LoginBean.loginvo.password}" a:placeholder="Password" 
+ 			required="true" requiredMessage="Required Field: Password"/>
+ 			<h:message for="Password" style="color:Red"></h:message>
+          </div>
+          <!--  <div class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" /> Remember Password</label>
+            </div> -->
+                 
+          <h:commandButton class="btn btn-primary btn-block" value="Login" action="#{LoginBean.loginForm}"/>
+  </h:form>
+  </div>
+        <div class="text-center">
+         
+			<a  href="register.xhtml">Not yet Register!!</a>
+        </div>
+      </div>
+    </div>
+  
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+</h:body>
+
+</html>

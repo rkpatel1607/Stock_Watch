@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="en"
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://xmlns.jcp.org/jsf/html"
+ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+ xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Sell Stock</title>
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet" />
+ 
+  <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">
+            function calculateAmount() {
+                $("#purchase .amt").val(($("#purchase .purchasePrice").val() * $("#purchase .qty").val()).toFixed(2));
+            }
+        </script>
+  
+</h:head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <div class="content-wrapper" style="margin-left: 0;">
+  	<h:form>
+      <div class="row">
+        <div class="col-11 text-center">
+           <h2>
+               Stock Exchange #{LoginBean.loginvo.username}
+           </h2>
+        
+      <div class="text-right">
+        <h:form><h:commandButton action="#{LoginBean.LogoutMethod}" value="logout" ></h:commandButton></h:form>
+        <!--  <span style="float:right;"><h:link value="Logout" outcome="index" style="text-align: right;"/></span> -->
+        </div>
+        </div> </div>
+    </h:form>
+    
+    <div class="row">
+                    <!--left col-->
+                    <div class="col-sm-3">
+                        <ul class="list-group">
+                            <li class="list-group-item text-muted">User Tasks</li>
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> 12.18.2017</li>
+                          <!--  <li class="list-group-item text-right"><span class="pull-left"><strong>Account balance</strong></span> #{StockApiBean.balance}</li> -->  
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Real name</strong></span> #{LoginBean.loginvo.firstname} </li>
+                        </ul>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Manager Tasks <i class="fa fa-link fa-1x"></i></div>
+                            <div class="panel-body"><a href="https://bootsnipp.com/snippets/kv2aW" target="_blank">bootsnipp.com</a></div>
+                        </div>
+                    </div>
+    
+    <!-- main column -->
+                    <div class="col-sm-6">
+                        <h:form id="purchase">
+                            <h:messages style="color: red;"/>
+                            Stock Name: <h:inputText binding="#{purchaseSymbol}" id="symbol" styleClass="form-control purchaseSymbol" value="#{stockApiBean.purchaseSymbol}" required="true"/><br />
+                            Price: <h:inputText binding="#{purchasePrice}" id="price" styleClass="form-control purchasePrice" value="#{stockApiBean.purchasePrice}" required="true"/><br />
+                            Quantity: <h:inputText binding="#{qty}" id="qty" styleClass="form-control qty" value="#{stockApiBean.qty}" required="true" onkeyup="calculateAmount()"/><br />
+                            Amount: <h:inputText binding="#{amt}" id="amt" styleClass="form-control amt" value="#{stockApiBean.amt}" required="true"/><br />
+                            <h:commandButton styleClass="btn btn-success btn-login-submit" value="Sell" action="#{stockApiBean.sellDbRecord(purchaseSymbol.value, purchasePrice.value, qty.value)}"/>
+                        	     
+                        	        <div class="text-center">
+     <span class="d-block small mt-3"><a  href="Userhome.xhtml">Go back to Home</a></span>
+        </div>
+                        </h:form>
+                    </div>
+      
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+  <!--   <footer class="sticky-footer bg-dark ">
+      <div class="container">
+        <div class="text-center">
+          
+        </div>
+      </div>
+    </footer> --> 
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+  </div>
+  </div>
+</body>
+
+</html>
+ 
